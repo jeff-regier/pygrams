@@ -1,0 +1,48 @@
+************************
+*       PyGrams!       *
+************************
+
+Copyright 2008, Jeffrey Regier, jeff [at] stat [dot] berkeley [dot] edu
+
+This file is part of PyGrams.
+
+PyGrams is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+PyGrams is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with PyGrams.  If not, see <http://www.gnu.org/licenses/>.
+
+---------------------------------------------------
+
+Dependencies & Installation
+
+PyGrams has been tested with Linux and Python 2.5x. It requires the 
+porter_stemmer.py module, which is available from 
+http://tartarus.org/~martin/PorterStemmer/python.txt.
+
+No installation is necesssary. PyGrams is meant to be run from 
+the src directory.
+
+---------------------------------------------------
+
+Defining a Vocabulary
+
+To define a vocabulary, first run "form_candidates.py" to create a 
+file containing all possible n-grams. Then, run "filter_candidates.py" 
+to find just the n-grams which appear sufficiently frequently in 
+relation to the frequency of their components.
+
+---------------------------------------------------
+
+Converting Documents
+
+Upon creating a vocabulary file, you can convert documents to n-grams 
+by running "convert_docs.py".
+
