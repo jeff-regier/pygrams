@@ -59,16 +59,15 @@ def output_candidates(candidates_file):
         candidate_handle.write("%s\t%s\n" % (token, count))
 
 
-def main(stop_file, doc_file, candidates_file):
-    ngram_common.load_stop_words(stop_file)
+def main(doc_file, candidates_file):
     count_candidates(doc_file)
     output_candidates(candidates_file)
 
 
 if __name__ == "__main__":
-    if len(sys.argv) == 4:
-        main(sys.argv[1], sys.argv[2], sys.argv[3])
+    if len(sys.argv) == 3:
+        main(sys.argv[1], sys.argv[2])
     else:
-        print ("usage: ./form_candidates.py <stop_words> "
+        print ("usage: ./form_candidates.py "
             "<doc-in-file> <candidates-out-file>")
 

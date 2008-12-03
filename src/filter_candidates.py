@@ -22,7 +22,7 @@ import sys
 import re
 import math
 
-MIN_COUNT = 5
+MIN_COUNT = 10
 PRIOR_GRAM_COUNT = 100
 BIGRAM_THESHHOLD = 0.005
 TRIGRAM_THESHHOLD = 0.004

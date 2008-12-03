@@ -1,4 +1,4 @@
-a
+stop_word_string = """a
 at
 the
 of
@@ -230,4 +230,6 @@ will
 would
 yet
 he
-she
+she"""
+
+stop_words = stop_word_string.split('\n')

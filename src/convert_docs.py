@@ -56,25 +56,28 @@ def convert_docs(doc_file, out_file):
             print "procesing document %s" % i
         i += 1
 
+        id_match = re.search(r'^(.+?\t)(.*)', doc)
+        doc_id = id_match.group(1) if id_match else ""
+        doc = id_match.group(2) if id_match else doc
+
         clauses = ngram_common.extract_clauses(doc)
         doc_ngrams = []
         for cl in clauses:
             unigrams = ngram_common.to_unigrams(cl)
             cl_ngrams = form_ngrams(unigrams)
             doc_ngrams.extend(cl_ngrams)
-        out_handle.write("%s\n" % " ".join(doc_ngrams))
+        out_handle.write("%s%s\n" % (doc_id, " ".join(doc_ngrams)))
 
 
-def main(stop_file, vocab_file, doc_file, out_file):
-    ngram_common.load_stop_words(stop_file)
+def main(vocab_file, doc_file, out_file):
     load_vocab(vocab_file)
     convert_docs(doc_file, out_file)
 
 
 if __name__ == "__main__":
-    if len(sys.argv) == 5:
-        main(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
+    if len(sys.argv) == 4:
+        main(sys.argv[1], sys.argv[2], sys.argv[3],)
     else:
-        print ("usage: %s <stop-word-file> <vocabulary-file> <doc-file> "
+        print ("usage: %s <vocabulary-file> <doc-file> "
             "<out-file>" % sys.argv[0])
 

@@ -16,20 +16,13 @@
 
 import porter_stemmer
 import re
+import stop_words
 
 
 STEMMER = porter_stemmer.PorterStemmer()
 
-stop_word_lookup = {}
-
-
-def load_stop_words(stop_file):
-    stop_handle = open(stop_file)
-    for line in stop_handle:
-        stop_word_lookup[line.rstrip()] = True
-
 def extract_clauses(text):
-    stop_re = r'\b|\b'.join(stop_word_lookup.keys())
+    stop_re = r'\b|\b'.join(stop_words.stop_words)
     clause_re = r'[^a-z -]+|\b%s\b' % stop_re
     clauses = re.split(clause_re, text.lower())
     clauses = [re.sub(r'^ | $', '', c) for c in clauses]
